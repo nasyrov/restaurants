@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8effdbf9ed769ed33b1a8f8d890d3bec",
+    "content-hash": "b41525b78b7744ec51c5584e935876f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9027,6 +9027,71 @@
                 "source": "https://github.com/Seldaek/phar-utils/tree/1.1.2"
             },
             "time": "2021-08-19T21:01:38+00:00"
+        },
+        {
+            "name": "spatie/laravel-stubs",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-stubs.git",
+                "reference": "ff378cbfc7c9d38f8af64d0ab77d83c4c4febfb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-stubs/zipball/ff378cbfc7c9d38f8af64d0ab77d83c4c4febfb0",
+                "reference": "ff378cbfc7c9d38f8af64d0ab77d83c4c4febfb0",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.2|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Stubs\\StubsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Stubs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Opinionated Laravel stubs",
+            "homepage": "https://github.com/spatie/laravel-stubs",
+            "keywords": [
+                "laravel-stubs",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-stubs/issues",
+                "source": "https://github.com/spatie/laravel-stubs/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-07-08T09:54:27+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
