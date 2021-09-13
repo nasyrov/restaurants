@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while [ true ]
+do
+    php /code/artisan schedule:run
+    sleep 60
+done
+
