@@ -1,7 +1,7 @@
 #
 # Proxy
 #
-FROM traefik:alpine as proxy
+FROM traefik:1.7-alpine as proxy
 
 WORKDIR /code
 
