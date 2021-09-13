@@ -23,10 +23,14 @@ FROM php:7.4-fpm-alpine as backend
 
 WORKDIR /code
 
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS
+
 RUN docker-php-ext-install opcache pdo_mysql
 
 RUN pecl install redis
 RUN docker-php-ext-enable redis
+
+RUN apk del .build-deps
 
 COPY docker/php.ini /usr/local/etc/php
 COPY docker/opcache.ini /usr/local/etc/php/conf.d
@@ -40,7 +44,11 @@ WORKDIR /code
 
 COPY scheduler /usr/local/bin
 
+RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS
+
 RUN docker-php-ext-install pcntl pdo_mysql
 
 RUN pecl install redis
 RUN docker-php-ext-enable redis
+
+RUN apk del .build-deps
