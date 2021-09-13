@@ -5,10 +5,10 @@ namespace Tests\Unit\Models;
 use App\Models\Concerns\UnguardsAttributes;
 use App\Models\Restaurant;
 use App\Models\Schedule;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Tests\TestCase;
 
-class RestaurantTest extends TestCase
+class ScheduleTest extends TestCase
 {
     /** @test */
     public function it_uses_unguard_attributes_concern(): void
@@ -19,11 +19,11 @@ class RestaurantTest extends TestCase
     /** @test */
     public function it_has_many_schedules(): void
     {
-        $restaurant = new Restaurant();
+        $schedule = new Schedule();
 
-        $schedules = $restaurant->schedules();
+        $restaurant = $schedule->restaurant();
 
-        $this->assertInstanceOf(HasMany::class, $schedules);
-        $this->assertInstanceOf(Schedule::class, $schedules->getRelated());
+        $this->assertInstanceOf(BelongsTo::class, $restaurant);
+        $this->assertInstanceOf(Restaurant::class, $restaurant->getRelated());
     }
 }

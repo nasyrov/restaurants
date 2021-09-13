@@ -5,15 +5,15 @@ namespace App\Models;
 use App\Models\Concerns\UnguardsAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Restaurant extends Model
+class Schedule extends Model
 {
     use HasFactory;
     use UnguardsAttributes;
 
-    public function schedules(): HasMany
+    public function restaurant(): BelongsTo
     {
-        return $this->hasMany(Schedule::class);
+        return $this->belongsTo(Restaurant::class);
     }
 }
