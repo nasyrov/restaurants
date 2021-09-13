@@ -49,7 +49,8 @@
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi"
         ],
-        "lint": "vendor/bin/phpcs"
+        "lint": "vendor/bin/phpcs",
+        "analyse": "vendor/bin/phpstan analyse"
     },
     "extra": {
         "laravel": {
