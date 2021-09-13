@@ -1,0 +1,35 @@
+name: phpcs
+
+on:
+  push:
+    paths:
+      - 'app/**.php'
+      - 'tests/**.php'
+      - 'phpcs.xml'
+
+jobs:
+  psalm:
+    name: phpcs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+          tools: composer:v2
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Run composer install
+        run: composer install -n --prefer-dist
+
+      - name: Run phpcs
+        run: composer lint
