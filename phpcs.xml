@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="Restaurants">
+    <description>PSR12 with PHP 7.4+ compatibility</description>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <!-- PHP compatibility takes precedent over PSR12 -->
+    <rule ref="PHPCompatibility"/>
+    <rule ref="PSR12"/>
+
+    <!-- Support for PHP 7.4+ -->
+    <config name="testVersion" value="7.4-"/>
+
+    <file>app</file>
+    <file>tests</file>
+
+    <!-- Use snake_case for test names -->
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+</ruleset>
