@@ -3,15 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Concerns\UnguardsAttributes;
-use App\Models\Diary;
-use App\Models\Group;
-use App\Models\Message;
-use App\Models\Plan;
-use App\Models\Project;
-use App\Models\QueryBuilders\UserQueryBuilder;
-use App\Models\Ticket;
 use App\Models\User;
-use App\Models\Wage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
