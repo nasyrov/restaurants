@@ -22,8 +22,8 @@ services:
             target: frontend
         container_name: restaurants-frontend
         volumes:
-            - ${VOLUME}/public:/code/public:cached
-            - ${VOLUME}/storage/app/public:/code/public/storage:cached
+            - ./public:/code/public:cached
+            - ./storage/app/public:/code/public/storage:cached
         networks:
             - default
             - laravel
@@ -41,7 +41,7 @@ services:
             target: backend
         container_name: restaurants-backend
         volumes:
-            - ${VOLUME}:/code:cached
+            - .:/code:cached
         networks:
             - default
         depends_on:
@@ -59,7 +59,7 @@ services:
         command: php artisan queue:work
         container_name: restaurants-worker
         volumes:
-            - ${VOLUME}:/code:cached
+            - .:/code:cached
         networks:
             - default
         depends_on:
@@ -79,7 +79,7 @@ services:
         command: sh /usr/local/bin/scheduler
         container_name: restaurants-scheduler
         volumes:
-            - ${VOLUME}:/code:cached
+            - .:/code:cached
         networks:
             - default
         depends_on:
