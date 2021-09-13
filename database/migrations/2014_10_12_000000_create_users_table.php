@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -22,15 +17,5 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('users');
     }
 }
