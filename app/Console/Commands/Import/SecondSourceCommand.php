@@ -21,7 +21,7 @@ class SecondSourceCommand extends Command
 
         foreach ($reader as $record) {
             $restaurantData         = RestaurantData::fromRecordWithoutHeader($record);
-            $scheduleDataCollection = ScheduleDataCollection::fromSecondSourceRecord($record);
+            $scheduleDataCollection = ScheduleDataCollection::fromRecordWithoutHeader($record);
 
             /** @var Restaurant $restaurant */
             $restaurant = Restaurant::firstOrCreate($restaurantData->toArray());

@@ -22,7 +22,7 @@ class FirstSourceCommand extends Command
 
         foreach ($reader as $record) {
             $restaurantData         = RestaurantData::fromRecordWithHeader($record);
-            $scheduleDataCollection = ScheduleDataCollection::fromFirstSourceRecord($record);
+            $scheduleDataCollection = ScheduleDataCollection::fromRecordWithHeader($record);
 
             /** @var Restaurant $restaurant */
             $restaurant = Restaurant::firstOrCreate($restaurantData->toArray());

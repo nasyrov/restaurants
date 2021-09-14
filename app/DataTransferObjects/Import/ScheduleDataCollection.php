@@ -14,7 +14,7 @@ use function Safe\preg_match as preg_match;
  */
 class ScheduleDataCollection extends DataTransferObjectCollection
 {
-    public static function fromFirstSourceRecord(array $record): self
+    public static function fromRecordWithHeader(array $record): self
     {
         $weekdays = explode(',', $record['Days Open']);
 
@@ -27,7 +27,7 @@ class ScheduleDataCollection extends DataTransferObjectCollection
         return new self(array_map($transformer, $weekdays));
     }
 
-    public static function fromSecondSourceRecord(array $record): self
+    public static function fromRecordWithoutHeader(array $record): self
     {
         $parts = explode('/', $record[1]);
         $parts = array_map('trim', $parts);
@@ -62,14 +62,14 @@ class ScheduleDataCollection extends DataTransferObjectCollection
             $days = array_map($parseDays, $days);
             $days = array_merge(...$days);
 
-            $startHour = $parseTime($matches[2]);
-            $endHour   = $parseTime($matches[3]);
+            $openTime  = $parseTime($matches[2]);
+            $closeTime = $parseTime($matches[3]);
 
             foreach ($days as $day) {
                 $collection[] = new ScheduleData([
                     'weekday' => $day,
-                    'open'    => $startHour,
-                    'close'   => $endHour,
+                    'open'    => $openTime,
+                    'close'   => $closeTime,
                 ]);
             }
         }
