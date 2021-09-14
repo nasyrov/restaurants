@@ -2,7 +2,6 @@
 
 namespace App\DataTransferObjects\Import;
 
-use App\Enums\Import\TwoLettersWeekdayEnum;
 use Spatie\DataTransferObject\DataTransferObject;
 
 class ScheduleData extends DataTransferObject
