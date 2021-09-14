@@ -5,6 +5,7 @@ namespace App\Console\Commands\Import;
 use App\DataTransferObjects\Import\RestaurantData;
 use App\DataTransferObjects\Import\ScheduleDataCollection;
 use App\Models\Restaurant;
+use App\Models\Schedule;
 use Illuminate\Console\Command;
 use League\Csv\Reader;
 
@@ -26,9 +27,10 @@ class SecondSourceCommand extends Command
             $restaurant = Restaurant::firstOrCreate($restaurantData->toArray());
 
             foreach ($scheduleDataCollection as $scheduleData) {
-                $restaurant
-                    ->schedules()
-                    ->create($scheduleData->toArray());
+                Schedule::updateOrCreate(
+                    ['restaurant_id' => $restaurant->id, 'weekday' => $scheduleData->weekday],
+                    ['start_hour' => $scheduleData->start_hour, 'end_hour' => $scheduleData->end_hour]
+                );
             }
         }
 

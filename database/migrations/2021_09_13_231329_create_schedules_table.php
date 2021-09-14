@@ -15,6 +15,8 @@ class CreateSchedulesTable extends Migration
             $table->time('start_hour');
             $table->time('end_hour');
             $table->timestamps();
+
+            $table->unique(['restaurant_id', 'weekday']);
         });
     }
 }
