@@ -18,9 +18,27 @@ class ScheduleDataCollectionTest extends TestCase
 
         $this->assertInstanceOf(ScheduleDataCollection::class, $collection);
 
-        $this->assertCount(2, array_filter($collection->toArray(), fn(array $data) => $data['start_hour'] === $open));
-        $this->assertCount(2, array_filter($collection->toArray(), fn(array $data) => $data['end_hour'] === $close));
-        $this->assertCount(2, array_filter($collection->toArray(), fn(array $data) => in_array($data['weekday'], [1, 2], true)));
+        $this->assertCount(
+            2,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => $data['start_hour'] === $open
+            )
+        );
+        $this->assertCount(
+            2,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => $data['end_hour'] === $close
+            )
+        );
+        $this->assertCount(
+            2,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => in_array($data['weekday'], [1, 2], true)
+            )
+        );
     }
 
     /** @test */
@@ -32,9 +50,33 @@ class ScheduleDataCollectionTest extends TestCase
 
         $this->assertInstanceOf(ScheduleDataCollection::class, $collection);
 
-        $this->assertCount(7, array_filter($collection->toArray(), fn(array $data) => $data['start_hour'] === '11:30:00'));
-        $this->assertCount(5, array_filter($collection->toArray(), fn(array $data) => $data['end_hour'] === '21:00:00'));
-        $this->assertCount(2, array_filter($collection->toArray(), fn(array $data) => $data['end_hour'] === '22:00:00'));
-        $this->assertCount(7, array_filter($collection->toArray(), fn(array $data) => in_array($data['weekday'], [1, 2, 3, 4, 5, 6, 7], true)));
+        $this->assertCount(
+            7,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => $data['start_hour'] === '11:30:00'
+            )
+        );
+        $this->assertCount(
+            5,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => $data['end_hour'] === '21:00:00'
+            )
+        );
+        $this->assertCount(
+            2,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => $data['end_hour'] === '22:00:00'
+            )
+        );
+        $this->assertCount(
+            7,
+            array_filter(
+                $collection->toArray(),
+                fn(array $data) => in_array($data['weekday'], [1, 2, 3, 4, 5, 6, 7], true)
+            )
+        );
     }
 }
