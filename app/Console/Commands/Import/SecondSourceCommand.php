@@ -29,7 +29,7 @@ class SecondSourceCommand extends Command
             foreach ($scheduleDataCollection as $scheduleData) {
                 Schedule::updateOrCreate(
                     ['restaurant_id' => $restaurant->id, 'weekday' => $scheduleData->weekday],
-                    ['start_hour' => $scheduleData->start_hour, 'end_hour' => $scheduleData->end_hour]
+                    $scheduleData->only('open', 'close')->toArray()
                 );
             }
         }

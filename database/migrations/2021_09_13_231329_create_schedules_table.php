@@ -12,8 +12,8 @@ class CreateSchedulesTable extends Migration
             $table->id();
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
             $table->unsignedTinyInteger('weekday');
-            $table->time('start_hour');
-            $table->time('end_hour');
+            $table->time('open');
+            $table->time('close');
             $table->timestamps();
 
             $table->unique(['restaurant_id', 'weekday']);

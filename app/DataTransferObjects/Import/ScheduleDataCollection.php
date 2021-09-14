@@ -19,9 +19,9 @@ class ScheduleDataCollection extends DataTransferObjectCollection
         $weekdays = explode(',', $record['Days Open']);
 
         $transformer = fn(string $weekday): ScheduleData => new ScheduleData([
-            'weekday'    => TwoLettersWeekdayEnum::from($weekday)->value,
-            'start_hour' => $record['Opens'],
-            'end_hour'   => $record['Closes'],
+            'weekday' => TwoLettersWeekdayEnum::from($weekday)->value,
+            'open'    => $record['Opens'],
+            'close'   => $record['Closes'],
         ]);
 
         return new self(array_map($transformer, $weekdays));
@@ -67,9 +67,9 @@ class ScheduleDataCollection extends DataTransferObjectCollection
 
             foreach ($days as $day) {
                 $collection[] = new ScheduleData([
-                    'weekday'    => $day,
-                    'start_hour' => $startHour,
-                    'end_hour'   => $endHour,
+                    'weekday' => $day,
+                    'open'    => $startHour,
+                    'close'   => $endHour,
                 ]);
             }
         }
