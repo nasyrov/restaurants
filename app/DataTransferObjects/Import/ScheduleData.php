@@ -8,7 +8,7 @@ class ScheduleData extends DataTransferObject
 {
     public int $weekday;
 
-    public string $start_hour;
+    public string $open;
 
-    public string $end_hour;
+    public string $close;
 }

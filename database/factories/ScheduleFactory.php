@@ -15,8 +15,8 @@ class ScheduleFactory extends Factory
         return [
             'restaurant_id' => Restaurant::factory(),
             'weekday'       => date('N', $this->faker->unixTime),
-            'start_hour'    => $this->faker->time,
-            'end_hour'      => $this->faker->time,
+            'open'          => $this->faker->time,
+            'close'         => $this->faker->time,
         ];
     }
 }

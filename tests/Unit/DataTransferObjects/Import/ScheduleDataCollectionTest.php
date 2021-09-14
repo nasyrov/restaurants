@@ -22,14 +22,14 @@ class ScheduleDataCollectionTest extends TestCase
             2,
             array_filter(
                 $collection->toArray(),
-                fn(array $data) => $data['start_hour'] === $open
+                fn(array $data) => $data['open'] === $open
             )
         );
         $this->assertCount(
             2,
             array_filter(
                 $collection->toArray(),
-                fn(array $data) => $data['end_hour'] === $close
+                fn(array $data) => $data['close'] === $close
             )
         );
         $this->assertCount(
@@ -54,21 +54,21 @@ class ScheduleDataCollectionTest extends TestCase
             7,
             array_filter(
                 $collection->toArray(),
-                fn(array $data) => $data['start_hour'] === '11:30:00'
+                fn(array $data) => $data['open'] === '11:30:00'
             )
         );
         $this->assertCount(
             5,
             array_filter(
                 $collection->toArray(),
-                fn(array $data) => $data['end_hour'] === '21:00:00'
+                fn(array $data) => $data['close'] === '21:00:00'
             )
         );
         $this->assertCount(
             2,
             array_filter(
                 $collection->toArray(),
-                fn(array $data) => $data['end_hour'] === '22:00:00'
+                fn(array $data) => $data['close'] === '22:00:00'
             )
         );
         $this->assertCount(
