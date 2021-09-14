@@ -3,7 +3,6 @@
 namespace App\Console\Commands\Import;
 
 use App\DataTransferObjects\Import\RestaurantData;
-use App\DataTransferObjects\Import\ScheduleDataCollection;
 use App\Models\Restaurant;
 use App\Models\Schedule;
 use Illuminate\Console\Command;
@@ -21,13 +20,12 @@ class FirstSourceCommand extends Command
             ->setHeaderOffset(0);
 
         foreach ($reader as $record) {
-            $restaurantData         = RestaurantData::fromRecordWithHeader($record);
-            $scheduleDataCollection = ScheduleDataCollection::fromRecordWithHeader($record);
+            $restaurantData = RestaurantData::fromRecordWithHeader($record);
 
             /** @var Restaurant $restaurant */
-            $restaurant = Restaurant::firstOrCreate($restaurantData->toArray());
+            $restaurant = Restaurant::firstOrCreate($restaurantData->only('name')->toArray());
 
-            foreach ($scheduleDataCollection as $scheduleData) {
+            foreach ($restaurantData->schedules as $scheduleData) {
                 Schedule::updateOrCreate(
                     ['restaurant_id' => $restaurant->id, 'weekday' => $scheduleData->weekday],
                     $scheduleData->only('open', 'close')->toArray()
