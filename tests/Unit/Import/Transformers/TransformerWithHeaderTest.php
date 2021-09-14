@@ -3,12 +3,21 @@
 namespace Tests\Unit\Import\Transformers;
 
 use App\DataTransferObjects\Import\RestaurantData;
+use App\Import\Contracts\Transformable;
 use App\Import\Transformers\TransformerWithHeader;
 use League\Csv\Reader;
 use Tests\TestCase;
 
 class TransformerWithHeaderTest extends TestCase
 {
+    /** @test */
+    public function it_implements_transformable_contact(): void
+    {
+        $transformer = new TransformerWithHeader();
+
+        $this->assertInstanceOf(Transformable::class, $transformer);
+    }
+
     /** @test */
     public function it_transforms_reader_records_with_header(): void
     {
