@@ -23,7 +23,7 @@ class SecondSourceCommand extends Command
             $scheduleDataCollection = ScheduleDataCollection::fromSecondSourceRecord($record);
 
             /** @var Restaurant $restaurant */
-            $restaurant = Restaurant::create($restaurantData->toArray());
+            $restaurant = Restaurant::firstOrCreate($restaurantData->toArray());
 
             foreach ($scheduleDataCollection as $scheduleData) {
                 $restaurant

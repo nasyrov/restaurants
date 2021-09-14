@@ -24,7 +24,7 @@ class FirstSourceCommand extends Command
             $scheduleDataCollection = ScheduleDataCollection::fromFirstSourceRecord($record);
 
             /** @var Restaurant $restaurant */
-            $restaurant = Restaurant::create($restaurantData->toArray());
+            $restaurant = Restaurant::firstOrCreate($restaurantData->toArray());
 
             foreach ($scheduleDataCollection as $scheduleData) {
                 $restaurant
