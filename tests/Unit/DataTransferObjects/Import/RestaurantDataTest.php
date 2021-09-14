@@ -15,6 +15,7 @@ class RestaurantDataTest extends TestCase
         ]);
 
         $this->assertInstanceOf(RestaurantData::class, $data);
+        $this->assertSame($name, $data->name);
     }
 
     /** @test */
@@ -25,5 +26,6 @@ class RestaurantDataTest extends TestCase
         ]);
 
         $this->assertInstanceOf(RestaurantData::class, $data);
+        $this->assertSame($name, $data->name);
     }
 }
