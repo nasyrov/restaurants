@@ -7,6 +7,8 @@ use App\Enums\Import\TwoLettersWeekdayEnum;
 use Carbon\Carbon;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 
+use function Safe\preg_match as preg_match;
+
 /**
  * @method ScheduleData current()
  */
