@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands\Import;
 
+use App\DataTransferObjects\Import\RestaurantData;
+use App\DataTransferObjects\Import\ScheduleDataCollection;
+use App\Models\Restaurant;
 use Illuminate\Console\Command;
 use League\Csv\Reader;
 
@@ -17,7 +20,20 @@ class FirstSourceCommand extends Command
             ->setHeaderOffset(0);
 
         foreach ($reader as $record) {
+            $restaurantData         = RestaurantData::fromFirstSourceRecord($record);
+            $scheduleDataCollection = ScheduleDataCollection::fromFirstSourceRecord($record);
+
+            /** @var Restaurant $restaurant */
+            $restaurant = Restaurant::create($restaurantData->toArray());
+
+            foreach ($scheduleDataCollection as $scheduleData) {
+                $restaurant
+                    ->schedules()
+                    ->create($scheduleData->toArray());
+            }
         }
+
+        $this->info('First source done.');
 
         return 0;
     }
