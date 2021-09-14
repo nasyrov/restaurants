@@ -8,9 +8,9 @@ use Tests\TestCase;
 class ScheduleDataCollectionTest extends TestCase
 {
     /** @test */
-    public function it_creates_a_new_instance_from_first_source_record(): void
+    public function it_creates_a_new_instance_from_record_with_header(): void
     {
-        $collection = ScheduleDataCollection::fromFirstSourceRecord([
+        $collection = ScheduleDataCollection::fromRecordWithHeader([
             'Opens'     => $open = $this->faker->time,
             'Closes'    => $close = $this->faker->time,
             'Days Open' => 'Mo,Tu',
@@ -42,9 +42,9 @@ class ScheduleDataCollectionTest extends TestCase
     }
 
     /** @test */
-    public function it_creates_a_new_instance_from_second_source_record(): void
+    public function it_creates_a_new_instance_from_record_without_header(): void
     {
-        $collection = ScheduleDataCollection::fromSecondSourceRecord([
+        $collection = ScheduleDataCollection::fromRecordWithoutHeader([
             1 => 'Mon-Thu, Sun 11:30 am - 9 pm  / Fri-Sat 11:30 am - 10 pm',
         ]);
 
