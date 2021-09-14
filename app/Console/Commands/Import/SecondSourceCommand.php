@@ -20,7 +20,7 @@ class SecondSourceCommand extends Command
         $reader = Reader::createFromPath(storage_path('app/csv/restaurants-hours-source-2.csv'));
 
         foreach ($reader as $record) {
-            $restaurantData         = RestaurantData::fromSecondSourceRecord($record);
+            $restaurantData         = RestaurantData::fromRecordWithoutHeader($record);
             $scheduleDataCollection = ScheduleDataCollection::fromSecondSourceRecord($record);
 
             /** @var Restaurant $restaurant */

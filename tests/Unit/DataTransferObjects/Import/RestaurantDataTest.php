@@ -8,24 +8,26 @@ use Tests\TestCase;
 class RestaurantDataTest extends TestCase
 {
     /** @test */
-    public function it_creates_a_new_instance_from_first_source_record(): void
+    public function it_creates_a_new_instance_from_record_with_header(): void
     {
-        $data = RestaurantData::fromFirstSourceRecord([
+        $data = RestaurantData::fromRecordWithHeader([
             'Restaurant name' => $name = $this->faker->company,
         ]);
 
         $this->assertInstanceOf(RestaurantData::class, $data);
+
         $this->assertSame($name, $data->name);
     }
 
     /** @test */
-    public function it_creates_a_new_instance_from_second_source_record(): void
+    public function it_creates_a_new_instance_from_record_without_header(): void
     {
-        $data = RestaurantData::fromSecondSourceRecord([
+        $data = RestaurantData::fromRecordWithoutHeader([
             0 => $name = $this->faker->company,
         ]);
 
         $this->assertInstanceOf(RestaurantData::class, $data);
+
         $this->assertSame($name, $data->name);
     }
 }

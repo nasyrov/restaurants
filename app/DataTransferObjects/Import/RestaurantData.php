@@ -8,14 +8,14 @@ class RestaurantData extends DataTransferObject
 {
     public string $name;
 
-    public static function fromFirstSourceRecord(array $record): self
+    public static function fromRecordWithHeader(array $record): self
     {
         return new self([
             'name' => $record['Restaurant name'],
         ]);
     }
 
-    public static function fromSecondSourceRecord(array $record): self
+    public static function fromRecordWithoutHeader(array $record): self
     {
         return new self([
             'name' => $record[0],

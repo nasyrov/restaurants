@@ -21,7 +21,7 @@ class FirstSourceCommand extends Command
             ->setHeaderOffset(0);
 
         foreach ($reader as $record) {
-            $restaurantData         = RestaurantData::fromFirstSourceRecord($record);
+            $restaurantData         = RestaurantData::fromRecordWithHeader($record);
             $scheduleDataCollection = ScheduleDataCollection::fromFirstSourceRecord($record);
 
             /** @var Restaurant $restaurant */
