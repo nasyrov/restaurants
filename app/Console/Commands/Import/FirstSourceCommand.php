@@ -30,7 +30,7 @@ class FirstSourceCommand extends Command
             foreach ($scheduleDataCollection as $scheduleData) {
                 Schedule::updateOrCreate(
                     ['restaurant_id' => $restaurant->id, 'weekday' => $scheduleData->weekday],
-                    ['open' => $scheduleData->open, 'close' => $scheduleData->close]
+                    $scheduleData->only('open', 'close')->toArray()
                 );
             }
         }
