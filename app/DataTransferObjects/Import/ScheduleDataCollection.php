@@ -6,7 +6,7 @@ use App\Enums\Import\TwoLettersWeekdayEnum;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 
 /**
- * @method ScheduleData current
+ * @method ScheduleData current()
  */
 class ScheduleDataCollection extends DataTransferObjectCollection
 {
