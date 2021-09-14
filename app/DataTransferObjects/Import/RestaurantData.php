@@ -14,4 +14,11 @@ class RestaurantData extends DataTransferObject
             'name' => $record['Restaurant name'],
         ]);
     }
+
+    public static function fromSecondSourceRecord(array $record): self
+    {
+        return new self([
+            'name' => $record[0],
+        ]);
+    }
 }
