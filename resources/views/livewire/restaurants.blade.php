@@ -19,8 +19,8 @@
                 </x-table.td>
 
                 <x-table.td>
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-{{ $restaurant->status_color }}-100 text-{{ $restaurant->status_color }}-800">
+                        {{ __($restaurant->status) }}
                     </span>
                 </x-table.td>
             </x-table.tr>
