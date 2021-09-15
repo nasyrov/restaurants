@@ -5,6 +5,7 @@ namespace App\Import\DataTransferObjects;
 use App\Import\Enums\ThreeLettersWeekdayEnum;
 use App\Import\Enums\TwoLettersWeekdayEnum;
 use Carbon\Carbon;
+use Faker\Generator as Faker;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 
 use function Safe\preg_match as preg_match;
@@ -14,6 +15,17 @@ use function Safe\preg_match as preg_match;
  */
 class ScheduleDataCollection extends DataTransferObjectCollection
 {
+    public static function fromFaker(Faker $faker): self
+    {
+        return new self([
+            new ScheduleData([
+                'weekday' => $faker->randomElement(range(1, 7)),
+                'open'    => $faker->time,
+                'close'   => $faker->time,
+            ]),
+        ]);
+    }
+
     public static function fromRecordWithHeader(array $record): self
     {
         $weekdays = explode(',', $record['Days Open']);
