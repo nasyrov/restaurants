@@ -5,6 +5,9 @@
         "build": "mix --production"
     },
     "devDependencies": {
-        "laravel-mix": "6.0.31"
+        "autoprefixer": "10.3.4",
+        "laravel-mix": "6.0.31",
+        "postcss": "8.3.6",
+        "tailwindcss": "2.2.15"
     }
 }
