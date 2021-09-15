@@ -4,6 +4,7 @@ namespace App\Models\QueryBuilders;
 
 use App\Models\Schedule;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 /**
  * @template TModelClass of \App\Models\Restaurant
@@ -32,5 +33,10 @@ class RestaurantQueryBuilder extends Builder
                 ->currentWeekday()
                 ->withinWorkingHours()
         );
+    }
+
+    public function search(string $search): self
+    {
+        return $this->whereRaw('LOWER(name) like ?', ['%' . Str::lower($search) . '%']);
     }
 }

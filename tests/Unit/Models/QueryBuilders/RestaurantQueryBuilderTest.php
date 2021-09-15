@@ -96,4 +96,25 @@ class RestaurantQueryBuilderTest extends TestCase
         $this->assertFalse($restaurants->contains($restaurant2));
         $this->assertTrue($restaurants->contains($restaurant3));
     }
+
+    /** @test */
+    public function it_scopes_query_to_include_searched_restaurants(): void
+    {
+        $restaurant1 = Restaurant::factory()
+            ->create([
+                'name' => 'foo',
+            ]);
+
+        $restaurant2 = Restaurant::factory()
+            ->create([
+                'name' => 'bar',
+            ]);
+
+        $restaurants = Restaurant::query()
+            ->search('oo')
+            ->get();
+
+        $this->assertTrue($restaurants->contains($restaurant1));
+        $this->assertFalse($restaurants->contains($restaurant2));
+    }
 }
