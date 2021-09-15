@@ -3,5 +3,5 @@
 ])
 
 @section('body')
-    home sweet home
+    <livewire:restaurants />
 @endsection
