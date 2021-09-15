@@ -14,4 +14,14 @@ class ScheduleQueryBuilder extends Builder
     {
         return $this->where('weekday', now()->dayOfWeekIso);
     }
+
+    public function withCurrentStatus(): self
+    {
+        $function = config('database.default') === 'sqlite' ? 'IIF' : 'IF';
+
+        return $this->selectRaw(
+            \Safe\sprintf("%s(? BETWEEN open AND close, 'open', 'closed') as status", $function),
+            [now()->format('H:i:s')]
+        );
+    }
 }
