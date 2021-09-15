@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Import;
 
-use App\DataTransferObjects\Import\RestaurantData;
+use App\Import\DataTransferObjects\RestaurantData;
 use App\Models\Restaurant;
 use App\Models\Schedule;
 use Illuminate\Console\Command;

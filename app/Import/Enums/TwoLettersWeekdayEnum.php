@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums\Import;
+namespace App\Import\Enums;
 
 use Spatie\Enum\Laravel\Enum;
 

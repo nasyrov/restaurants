@@ -2,8 +2,8 @@
 
 namespace App\Import\Transformers;
 
-use App\DataTransferObjects\Import\RestaurantData;
 use App\Import\Contracts\Transformable;
+use App\Import\DataTransferObjects\RestaurantData;
 use Generator;
 use League\Csv\Reader;
 

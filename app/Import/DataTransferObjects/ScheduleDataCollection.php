@@ -1,9 +1,9 @@
 <?php
 
-namespace App\DataTransferObjects\Import;
+namespace App\Import\DataTransferObjects;
 
-use App\Enums\Import\ThreeLettersWeekdayEnum;
-use App\Enums\Import\TwoLettersWeekdayEnum;
+use App\Import\Enums\ThreeLettersWeekdayEnum;
+use App\Import\Enums\TwoLettersWeekdayEnum;
 use Carbon\Carbon;
 use Spatie\DataTransferObject\DataTransferObjectCollection;
 

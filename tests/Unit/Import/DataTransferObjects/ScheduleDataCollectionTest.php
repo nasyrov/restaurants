@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\DataTransferObjects\Import;
+namespace Tests\Unit\Import\DataTransferObjects;
 
-use App\DataTransferObjects\Import\ScheduleDataCollection;
+use App\Import\DataTransferObjects\ScheduleDataCollection;
 use Tests\TestCase;
 
 class ScheduleDataCollectionTest extends TestCase
