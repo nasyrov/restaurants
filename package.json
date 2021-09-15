@@ -4,6 +4,9 @@
         "develop": "mix",
         "build": "mix --production"
     },
+    "dependencies": {
+        "alpinejs": "3.3.3"
+    },
     "devDependencies": {
         "autoprefixer": "10.3.4",
         "laravel-mix": "6.0.31",
