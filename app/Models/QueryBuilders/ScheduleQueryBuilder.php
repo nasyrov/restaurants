@@ -20,19 +20,23 @@ class ScheduleQueryBuilder extends Builder
         $time = now()->format('H:i:s');
 
         return $this
-            ->where(fn(Builder $query) => $query
-                ->whereColumn('open', '<=', 'close')
-                ->where(fn(Builder $query) => $query
-                    ->where('open', '<=', $time)
-                    ->where('close', '>=', $time)
-                )
+            ->where(
+                fn(Builder $query) => $query
+                    ->whereColumn('open', '<=', 'close')
+                    ->where(
+                        fn(Builder $query) => $query
+                            ->where('open', '<=', $time)
+                            ->where('close', '>=', $time)
+                    )
             )
-            ->orWhere(fn(Builder $query) => $query
-                ->whereColumn('open', '>=', 'close')
-                ->where(fn(Builder $query) => $query
-                    ->where('open', '<=', $time)
-                    ->orWhere('close', '>=', $time)
-                )
+            ->orWhere(
+                fn(Builder $query) => $query
+                    ->whereColumn('open', '>=', 'close')
+                    ->where(
+                        fn(Builder $query) => $query
+                            ->where('open', '<=', $time)
+                            ->orWhere('close', '>=', $time)
+                    )
             );
     }
 }

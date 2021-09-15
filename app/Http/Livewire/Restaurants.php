@@ -18,9 +18,11 @@ class Restaurants extends Component
         return View::make('livewire.restaurants', [
             'restaurants' => Restaurant::query()
                 ->withCurrentWeekdaySchedule()
-                ->whereHas('schedules', fn(ScheduleQueryBuilder $query) => $query
-                    ->currentWeekday()
-                    ->withinWorkingHours()
+                ->whereHas(
+                    'schedules',
+                    fn(ScheduleQueryBuilder $query) => $query
+                        ->currentWeekday()
+                        ->withinWorkingHours()
                 )
                 ->paginate(),
         ]);
