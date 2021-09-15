@@ -13,6 +13,6 @@ class HomePageTest extends TestCase
             ->withoutMix()
             ->get(route('home'))
             ->assertOk()
-            ->assertViewIs('welcome');
+            ->assertViewIs('home');
     }
 }

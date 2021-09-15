@@ -9,6 +9,6 @@ class HomeController
 {
     public function __invoke(): ViewContract
     {
-        return View::make('welcome');
+        return View::make('home');
     }
 }
