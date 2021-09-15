@@ -11,6 +11,7 @@ help:
 	@echo '  up       Start docker containers'
 	@echo '  down     Stop docker containers'
 	@echo '  migrate  Apply migrations'
+	@echo '  import   Import data'
 	@echo ''
 
 install:
@@ -18,6 +19,7 @@ install:
 	npm install
 	cp .env.example .env
 	php artisan key:generate
+	npm run develop
 
 update:
 	composer install
