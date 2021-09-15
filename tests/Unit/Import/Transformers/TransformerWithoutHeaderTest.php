@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Import\Transformers;
 
-use App\DataTransferObjects\Import\RestaurantData;
 use App\Import\Contracts\Transformable;
+use App\Import\DataTransferObjects\RestaurantData;
 use App\Import\Transformers\TransformerWithoutHeader;
 use League\Csv\Reader;
 use Tests\TestCase;

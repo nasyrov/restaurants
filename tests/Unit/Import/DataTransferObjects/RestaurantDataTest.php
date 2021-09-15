@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\DataTransferObjects\Import;
+namespace Tests\Unit\Import\DataTransferObjects;
 
-use App\DataTransferObjects\Import\RestaurantData;
+use App\Import\DataTransferObjects\RestaurantData;
 use Tests\TestCase;
 
 class RestaurantDataTest extends TestCase

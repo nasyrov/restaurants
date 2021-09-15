@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTransferObjects\Import;
+namespace App\Import\DataTransferObjects;
 
 use App\Enums\Import\ThreeLettersWeekdayEnum;
 use App\Enums\Import\TwoLettersWeekdayEnum;
