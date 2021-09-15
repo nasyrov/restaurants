@@ -31,3 +31,7 @@ down:
 
 migrate:
 	docker-compose exec -T -u nobody backend php artisan migrate
+
+import:
+	docker-compose exec -T -u nobody backend php artisan data:import restaurants-hours-source-1.csv -H
+	docker-compose exec -T -u nobody backend php artisan data:import restaurants-hours-source-2.csv
