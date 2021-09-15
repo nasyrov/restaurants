@@ -24,6 +24,20 @@ class Restaurant extends Model
         return new RestaurantQueryBuilder($query);
     }
 
+    public function getStatusAttribute(): string
+    {
+        return $this->currentWeekdaySchedule->isOpen()
+            ? 'Open'
+            : 'Closed';
+    }
+
+    public function getStatusColorAttribute(): string
+    {
+        return $this->currentWeekdaySchedule->isOpen()
+            ? 'green'
+            : 'red';
+    }
+
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class);
