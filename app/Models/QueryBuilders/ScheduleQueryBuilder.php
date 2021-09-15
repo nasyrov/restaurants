@@ -25,8 +25,24 @@ class ScheduleQueryBuilder extends Builder
         );
     }
 
-    public function withinOpeningHours(): self
+    public function withinWorkingHours(): self
     {
-        return $this->whereRaw('? BETWEEN open AND close', [now()->format('H:i:s')]);
+        $time = now()->format('H:i:s');
+
+        return $this
+            ->where(fn(Builder $query) => $query
+                ->whereColumn('open', '<=', 'close')
+                ->where(fn(Builder $query) => $query
+                    ->where('open', '<=', $time)
+                    ->where('close', '>=', $time)
+                )
+            )
+            ->orWhere(fn(Builder $query) => $query
+                ->whereColumn('open', '>=', 'close')
+                ->where(fn(Builder $query) => $query
+                    ->where('open', '<=', $time)
+                    ->orWhere('close', '>=', $time)
+                )
+            );
     }
 }

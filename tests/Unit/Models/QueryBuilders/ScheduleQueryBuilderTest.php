@@ -58,7 +58,7 @@ class ScheduleQueryBuilderTest extends TestCase
     }
 
     /** @test */
-    public function it_scopes_query_to_include_schedules_within_opening_hours(): void
+    public function it_scopes_query_to_include_schedules_within_working_hours(): void
     {
         Carbon::setTestNow(Carbon::parse('10:05:00'));
 
@@ -70,15 +70,29 @@ class ScheduleQueryBuilderTest extends TestCase
 
         $schedule2 = Schedule::factory()
             ->create([
+                'open'  => '10:00:00',
+                'close' => '01:00:00',
+            ]);
+
+        $schedule3 = Schedule::factory()
+            ->create([
                 'open'  => '11:00:00',
                 'close' => '12:00:00',
             ]);
 
+        $schedule4 = Schedule::factory()
+            ->create([
+                'open'  => '11:00:00',
+                'close' => '02:00:00',
+            ]);
+
         $schedules = Schedule::query()
-            ->withinOpeningHours()
+            ->withinWorkingHours()
             ->get();
 
         $this->assertTrue($schedules->contains($schedule1));
-        $this->assertFalse($schedules->contains($schedule2));
+        $this->assertTrue($schedules->contains($schedule2));
+        $this->assertFalse($schedules->contains($schedule3));
+        $this->assertFalse($schedules->contains($schedule4));
     }
 }
