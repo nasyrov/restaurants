@@ -4,8 +4,7 @@
         "develop": "mix",
         "build": "mix --production"
     },
-    "dependencies": {
-    },
     "devDependencies": {
+        "laravel-mix": "6.0.31"
     }
 }
