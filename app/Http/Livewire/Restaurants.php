@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\QueryBuilders\ScheduleQueryBuilder;
 use App\Models\Restaurant;
 use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Support\Facades\View;
@@ -22,12 +21,7 @@ class Restaurants extends Component
         return View::make('livewire.restaurants', [
             'restaurants' => Restaurant::query()
                 ->withCurrentWeekdaySchedule()
-                ->whereHas(
-                    'schedules',
-                    fn(ScheduleQueryBuilder $query) => $query
-                        ->currentWeekday()
-                        ->withinWorkingHours()
-                )
+                ->currentlyOpened()
                 ->paginate(),
         ]);
     }

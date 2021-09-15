@@ -49,4 +49,51 @@ class RestaurantQueryBuilderTest extends TestCase
         $this->assertTrue($restaurants->contains($restaurant2));
         $this->assertNull($restaurants->get(1)->currentWeekdaySchedule);
     }
+
+    /** @test */
+    public function it_scopes_query_to_include_currently_opened_restaurants(): void
+    {
+        Carbon::setTestNow(Carbon::parse('14-09-2021 10:05:00'));
+
+        $restaurant1 = Restaurant::factory()
+            ->create();
+
+        $schedule1 = Schedule::factory()
+            ->create([
+                'restaurant_id' => $restaurant1->id,
+                'weekday'       => 2,
+                'open'          => '10:00:00',
+                'close'         => '11:00:00',
+            ]);
+
+        $restaurant2 = Restaurant::factory()
+            ->create();
+
+        $schedule2 = Schedule::factory()
+            ->create([
+                'restaurant_id' => $restaurant2->id,
+                'weekday'       => 2,
+                'open'          => '11:00:00',
+                'close'         => '12:00:00',
+            ]);
+
+        $restaurant3 = Restaurant::factory()
+            ->create();
+
+        $schedule3 = Schedule::factory()
+            ->create([
+                'restaurant_id' => $restaurant3->id,
+                'weekday'       => 2,
+                'open'          => '10:00:00',
+                'close'         => '01:00:00',
+            ]);
+
+        $restaurants = Restaurant::query()
+            ->currentlyOpened()
+            ->get();
+
+        $this->assertTrue($restaurants->contains($restaurant1));
+        $this->assertFalse($restaurants->contains($restaurant2));
+        $this->assertTrue($restaurants->contains($restaurant3));
+    }
 }

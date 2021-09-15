@@ -23,4 +23,14 @@ class RestaurantQueryBuilder extends Builder
             ])
             ->with('currentWeekdaySchedule');
     }
+
+    public function currentlyOpened(): self
+    {
+        return $this->whereHas(
+            'schedules',
+            fn(ScheduleQueryBuilder $query) => $query
+                ->currentWeekday()
+                ->withinWorkingHours()
+        );
+    }
 }
