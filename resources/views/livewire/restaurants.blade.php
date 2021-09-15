@@ -1,5 +1,18 @@
 <div>
-    <x-table wire:loading.class="opacity-75 cursor-wait">
+    <div class="px-4 md:px-0 md:flex md:justify-between">
+        <div></div>
+
+        <div class="md:w-1/2">
+            <x-form.input
+                wire:model="search"
+                type="search"
+                placeholder="Search restaurants&hellip;"
+                autocomplete="off"
+            />
+        </div>
+    </div>
+
+    <x-table class="mt-4" wire:loading.class="opacity-75 cursor-wait">
         <x-slot name="head">
             <x-table.th>
                 {{ __('Restaurant') }}

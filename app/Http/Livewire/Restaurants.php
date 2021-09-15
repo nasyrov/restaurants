@@ -13,6 +13,10 @@ class Restaurants extends Component
 {
     use WithPagination;
 
+    public string $search = '';
+
+    protected $queryString = ['search'];
+
     public function render(): ViewContract
     {
         return View::make('livewire.restaurants', [
