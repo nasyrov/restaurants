@@ -13,6 +13,11 @@ class Schedule extends Model
     use HasFactory;
     use UnguardsAttributes;
 
+    /**
+     * @param  \Illuminate\Database\Query\Builder  $query
+     *
+     * @return ScheduleQueryBuilder<Schedule>
+     */
     public function newEloquentBuilder($query): ScheduleQueryBuilder
     {
         return new ScheduleQueryBuilder($query);
