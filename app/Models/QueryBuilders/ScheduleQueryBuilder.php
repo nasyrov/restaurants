@@ -24,4 +24,9 @@ class ScheduleQueryBuilder extends Builder
             [now()->format('H:i:s')]
         );
     }
+
+    public function withinOpeningHours(): self
+    {
+        return $this->whereRaw('? BETWEEN open AND close', [now()->format('H:i:s')]);
+    }
 }
