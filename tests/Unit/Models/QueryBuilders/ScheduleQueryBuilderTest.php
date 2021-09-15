@@ -32,32 +32,6 @@ class ScheduleQueryBuilderTest extends TestCase
     }
 
     /** @test */
-    public function it_scopes_query_to_include_schedules_status(): void
-    {
-        Carbon::setTestNow(Carbon::parse('10:05:00'));
-
-        $schedule1 = Schedule::factory()
-            ->create([
-                'open'  => '10:00:00',
-                'close' => '11:00:00',
-            ]);
-
-        $schedule2 = Schedule::factory()
-            ->create([
-                'open'  => '11:00:00',
-                'close' => '12:00:00',
-            ]);
-
-        $schedules = Schedule::query()
-            ->withCurrentStatus()
-            ->latest()
-            ->get();
-
-        $this->assertSame('open', $schedules->get(0)->status);
-        $this->assertSame('closed', $schedules->get(1)->status);
-    }
-
-    /** @test */
     public function it_scopes_query_to_include_schedules_within_working_hours(): void
     {
         Carbon::setTestNow(Carbon::parse('10:05:00'));
