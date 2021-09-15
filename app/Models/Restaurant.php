@@ -6,6 +6,7 @@ use App\Models\Concerns\UnguardsAttributes;
 use App\Models\QueryBuilders\RestaurantQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Restaurant extends Model
@@ -26,5 +27,10 @@ class Restaurant extends Model
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class);
+    }
+
+    public function currentWeekdaySchedule(): BelongsTo
+    {
+        return $this->belongsTo(Schedule::class);
     }
 }
