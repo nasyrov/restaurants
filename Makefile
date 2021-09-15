@@ -11,6 +11,7 @@ help:
 	@echo '  up       Start docker containers'
 	@echo '  down     Stop docker containers'
 	@echo '  migrate  Apply migrations'
+	@echo '  import   Import data'
 	@echo ''
 
 install:
